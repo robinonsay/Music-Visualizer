@@ -8,7 +8,7 @@ BeatDetect beat;
 int  r = 6400;
 float rad = 70;
 int backC = 0;
-int m =8;
+int m = 8;
 void setup()
 {
   //size(displayWidth, displayHeight);
