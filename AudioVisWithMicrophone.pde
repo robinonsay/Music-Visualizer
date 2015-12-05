@@ -81,7 +81,7 @@ void draw()
       
       ellipse(displayWidth/2,y,y2*m/2,y2*m/2);
       curveVertex(x,y);
-      curveVertex(x+10,y2*4+y);
+      curveVertex(x+10,y2*8+y);
 
        pushStyle();
        stroke(-1);
