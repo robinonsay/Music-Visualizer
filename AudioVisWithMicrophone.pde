@@ -8,7 +8,7 @@ BeatDetect beat;
 int  r = 6400;
 float rad = 70;
 int backC = 0;
-int m = 8;
+int scalar = 11;
 void setup()
 {
   //size(displayWidth, displayHeight);
@@ -46,20 +46,29 @@ void draw()
   
   clear();
   //noFill();
-  if (beat.isOnset()|| beat.isHat()){
+  float s = (float)scalar/((float)scalar);
+  scalar*=s;
+  if (beat.isOnset()){
     //clear();
 
    red= abs(r-255);
     g = abs(g-255);
     b = abs(b-255);
     r*=2;
-  } 
+    scalar*=s;
+  }else if(beat.isHat()){
+    red= random(50,200);
+    g = random(50,100);
+    b = random(200,255);
+  }
   r/=2;
+  scalar/=s;
+  //stroke(r,g,b);
   fill(255-red,255-g,255-b);
     for(int i=0; i<bsize-1;i+=15){
        float y2 = (r + player.left.get(i)*100);
         
-        ellipse(displayWidth/2,y,y2*m*2,y2*m*2);
+        ellipse(displayWidth/2,y,y2*scalar*2,y2*scalar*2);
 
       }
       beginShape();
@@ -75,11 +84,11 @@ void draw()
       float x = map(i,0,bsize,0,displayWidth);
       float y2 = (r + player.left.get(i)*100);
 
-      y2 *= (i%2 == 0)?m/4:-m/4;
+      y2 *= (i%2 == 0)?scalar/4:-scalar/4;
       
       
       
-      ellipse(displayWidth/2,y,y2*m/2,y2*m/2);
+      ellipse(displayWidth/2,y,y2*scalar/2,y2*scalar/2);
       curveVertex(x,y);
       curveVertex(x+10,y2*8+y);
 
@@ -108,28 +117,20 @@ void draw()
   //  popStyle();
   //}
   //endShape();
-   if (flag) showMeta();
+   //if (flag) showMeta();
 }
  
  
-void showMeta() {
-  int time =  meta.length();
-  textSize(50);
-  textAlign(CENTER);
-  text( (int)(time/1000-millis()/1000)/60 + ":"+ (time/1000-millis()/1000)%60, -7, 21);
-}
+
  
-boolean flag =false;
-void mousePressed() {
-  if (dist(mouseX, mouseY, width/2, height/2)<150) flag =!flag;
-}
+
  
 //
 //boolean sketchFullScreen() {
 //  return true;
 //}
  
-void keyPressed() {
-  if(key==' ')exit();
-  if(key=='s')saveFrame("###.jpeg");
-}
+//void keyPressed() {
+//  if(key==' ')exit();
+//  if(key=='s')saveFrame("###.jpeg");
+//}
