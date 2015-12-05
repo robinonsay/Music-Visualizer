@@ -48,6 +48,7 @@ void draw()
   //noFill();
   if (beat.isOnset()|| beat.isHat()){
     //clear();
+
    red= abs(r-255);
     g = abs(g-255);
     b = abs(b-255);
@@ -59,6 +60,7 @@ void draw()
        float y2 = (r + player.left.get(i)*100);
         
         ellipse(displayWidth/2,y,y2*m*2,y2*m*2);
+
       }
       beginShape();
     stroke(r,g,b);
@@ -72,6 +74,7 @@ void draw()
       
       float x = map(i,0,bsize,0,displayWidth);
       float y2 = (r + player.left.get(i)*100);
+
       y2 *= (i%2 == 0)?m/4:-m/4;
       
       
@@ -79,6 +82,7 @@ void draw()
       ellipse(displayWidth/2,y,y2*m/2,y2*m/2);
       curveVertex(x,y);
       curveVertex(x+10,y2*4+y);
+
        pushStyle();
        stroke(-1);
        strokeWeight(2);
