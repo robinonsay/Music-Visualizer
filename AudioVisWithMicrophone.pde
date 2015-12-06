@@ -57,7 +57,7 @@ void draw()
     r*=2;
     scalar*=s;
   }else if(beat.isHat()){
-    red= random(50,200);
+    red= random(50,100);
     g = random(50,100);
     b = random(200,255);
   }
@@ -130,7 +130,7 @@ void draw()
 //  return true;
 //}
  
-//void keyPressed() {
-//  if(key==' ')exit();
-//  if(key=='s')saveFrame("###.jpeg");
-//}
+void keyPressed() {
+ if(key==' ')exit();
+ if(key=='s')saveFrame("###.jpeg");
+}
